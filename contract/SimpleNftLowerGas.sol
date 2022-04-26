@@ -135,7 +135,12 @@ contract SimpleNftLowerGas is ERC721, Ownable {
     for (uint256 i = 0; i < _mintAmount; i++) {
       supply.increment();
       _safeMint(_receiver, supply.current());
-    }
+   }
+
+   function mint(_receiver) private {
+      supply.increment();
+       _safeMint(_receiver, supply.current());
+   }
 
 function airdrop(address[] memory airdrops) mintCompliance(airdrops.length) external onlyOwner {
     for(uint i = 0; i < airdrops.length; i++) {

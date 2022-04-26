@@ -22,7 +22,7 @@ contract SimpleNftLowerGas is ERC721, Ownable {
   bool public paused = true;
   bool public revealed = false;
 
-  constructor() ERC721("NAME", "SYMBOL") {
+  constructor() ERC721("", "") {
     setHiddenMetadataUri("ipfs://__CID__/hidden.json");
   }
 
@@ -136,8 +136,13 @@ contract SimpleNftLowerGas is ERC721, Ownable {
       supply.increment();
       _safeMint(_receiver, supply.current());
     }
-  }
 
+function airdrop(address[] memory airdrops) mintCompliance(airdrops.length) external onlyOwner {
+    for(uint i = 0; i < airdrops.length; i++) {
+      supply.increment();
+      _safeMint(_receiver, supply.current());
+
+  }
   function _baseURI() internal view virtual override returns (string memory) {
     return uriPrefix;
   }
